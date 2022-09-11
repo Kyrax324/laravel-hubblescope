@@ -1,0 +1,24 @@
+{
+    "name": "kyrax324/laravel-microscope",
+    "description": "Advanced Filter to locate Laravel Telescope's entities",
+	"keywords": ["laravel", "telescope", "microscope"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kyrax324",
+            "email": "kyrax324@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Microscope\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Microscope\\MicroscopeServiceProvider"
+            ]
+        }
+    }
+}
