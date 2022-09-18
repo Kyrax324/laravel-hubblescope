@@ -29,7 +29,7 @@ if (token) {
 // Vue.component('related-entries', require('./components/RelatedEntries.vue').default);
 // Vue.component('index-screen', require('./components/IndexScreen.vue').default);
 // Vue.component('preview-screen', require('./components/PreviewScreen.vue').default);
-Vue.component('Microscope', require('./components/index.vue').default);
+Vue.component('Hubblescope', require('./components/index.vue').default);
 
 Vue.prototype.$dayjs = dayjs
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Microscope\Models;
+namespace Hubblescope\Models;
 
 // use Illuminate\Database\Eloquent\Model;
 

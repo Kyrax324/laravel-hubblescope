@@ -1,6 +1,6 @@
 <?php
 
-namespace Microscope\Http\Requests;
+namespace Hubblescope\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

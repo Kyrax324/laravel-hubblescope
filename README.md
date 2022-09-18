@@ -1,13 +1,13 @@
-# Microscope
+# Hubblescope
 
 Advanced Filter to locate Laravel Telescope's entities
 
 ## Installation
 
 ```sh
-composer require kyrax324/laravel-microscope
+composer require kyrax324/laravel-hubblescope
 ```
 
 ```sh
-php artisan microscope:publish
+php artisan hubblescope:publish
 ```

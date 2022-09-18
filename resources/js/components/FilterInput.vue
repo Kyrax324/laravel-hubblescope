@@ -70,7 +70,7 @@
 							<v-select
 								v-model="form.operator"
 								placeholder="operator"
-								:items="operationOptions"
+								:items="operatorOptions"
 								outlined
 								dense
 								hide-details
@@ -145,7 +145,7 @@ export default {
 			form: {},
 			formAction: null,
 			formDialog: false,
-			operationOptions: [],
+			operatorOptions: [],
 			shortcuts: [],
 		}
 	},
@@ -158,7 +158,7 @@ export default {
 		}
 	},
 	created(){
-		this.operationOptions = window.operationOptions
+		this.operatorOptions = window.operatorOptions
 		this.shortcuts = window.shortcutSuggestions
 	},
 	methods:{

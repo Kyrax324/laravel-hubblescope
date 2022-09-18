@@ -143,7 +143,7 @@ export default {
 				"page" : page,
 				"itemsPerPage" : itemsPerPage,
 			}
-			axios.post("/microscope-api/search", payload).then((res)=>{
+			axios.post("/hubblescope-api/search", payload).then((res)=>{
 				let result = res.data.data
 				this.records = result.data
 				this.paginator = {
@@ -162,7 +162,7 @@ export default {
 				"tags": this.tags,
 				"fields" : this.fields,
 			}
-			axios.post("/microscope-api/dump-query", payload).then((res)=>{
+			axios.post("/hubblescope-api/dump-query", payload).then((res)=>{
 				let result = res.data.data
 				this.queryText = result
 			}).catch((err)=>{

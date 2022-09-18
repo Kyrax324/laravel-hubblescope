@@ -1,11 +1,11 @@
 <?php
 
-namespace Microscope;
+namespace Hubblescope;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class MicroscopeServiceProvider extends ServiceProvider
+class HubblescopeServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -15,7 +15,7 @@ class MicroscopeServiceProvider extends ServiceProvider
     public function register()
     {
 		$config = $this->app['config']->get("telescope");
-		$this->app['config']->set("telescope.ignore_paths", array_merge(["microscope*"], $config['ignore_paths']));
+		$this->app['config']->set("telescope.ignore_paths", array_merge(["hubblescope*"], $config['ignore_paths']));
     }
 
     /**
@@ -37,7 +37,7 @@ class MicroscopeServiceProvider extends ServiceProvider
         });
 
 		$this->loadViewsFrom(
-            __DIR__.'/../resources/views', 'microscope'
+            __DIR__.'/../resources/views', 'hubblescope'
         );
     }
 
@@ -77,12 +77,12 @@ class MicroscopeServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/microscope'),
-            ], ['microscope-assets', 'laravel-assets']);
+                __DIR__.'/../public' => public_path('vendor/hubblescope'),
+            ], ['hubblescope-assets', 'laravel-assets']);
 
             // $this->publishes([
-            //     __DIR__.'/../config/microscope.php' => config_path('microscope.php'),
-            // ], 'microscope-config');
+            //     __DIR__.'/../config/hubblescope.php' => config_path('hubblescope.php'),
+            // ], 'hubblescope-config');
         }
     }
 }

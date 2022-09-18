@@ -1,6 +1,6 @@
 <?php
 
-namespace Microscope\Console;
+namespace Hubblescope\Console;
 
 use Illuminate\Console\Command;
 
@@ -11,14 +11,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'microscope:publish {--force : Overwrite any existing files}';
+    protected $signature = 'hubblescope:publish {--force : Overwrite any existing files}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish all of the microscope resources';
+    protected $description = 'Publish all of the hubblescope resources';
 
     /**
      * Execute the console command.
@@ -28,12 +28,12 @@ class PublishCommand extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag' => 'microscope-config',
+            '--tag' => 'hubblescope-config',
             '--force' => $this->option('force'),
         ]);
 
         $this->call('vendor:publish', [
-            '--tag' => 'microscope-assets',
+            '--tag' => 'hubblescope-assets',
             '--force' => true,
         ]);
     }

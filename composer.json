@@ -1,7 +1,7 @@
 {
-    "name": "kyrax324/laravel-microscope",
+    "name": "kyrax324/laravel-hubblescope",
     "description": "Advanced Filter to locate Laravel Telescope's entities",
-	"keywords": ["laravel", "telescope", "microscope"],
+	"keywords": ["laravel", "telescope", "hubblescope"],
     "license": "MIT",
     "authors": [
         {
@@ -11,13 +11,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "Microscope\\": "src/"
+            "Hubblescope\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Microscope\\MicroscopeServiceProvider"
+                "Hubblescope\\HubblescopeServiceProvider"
             ]
         }
     }

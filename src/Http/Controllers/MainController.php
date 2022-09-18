@@ -1,18 +1,18 @@
 <?php
 
-namespace Microscope\Http\Controllers;
+namespace Hubblescope\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controller;
-use Microscope\Http\Requests\DumpQueryRequest;
-use Microscope\Http\Requests\SearchRequest;
-use Microscope\Models\TelescopeEntry;
+use Hubblescope\Http\Requests\DumpQueryRequest;
+use Hubblescope\Http\Requests\SearchRequest;
+use Hubblescope\Models\TelescopeEntry;
 
 class MainController extends Controller
 {
 	public function index()
 	{
-		return view("microscope::layout");
+		return view("hubblescope::layout");
 	}
 
 	public function search(SearchRequest $request)
