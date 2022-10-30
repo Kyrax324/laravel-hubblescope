@@ -14,7 +14,7 @@ Features:
 - result's json reader
 - dump query (for database querying)
 
-<p align="center"><img src="./art/preview.png" alt="Laravel Hubblescope Preview"></p>
+<p align="center"><img src="./art/preview-v1.png" alt="Laravel Hubblescope Preview"></p>
 
 ## Installation
 
