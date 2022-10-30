@@ -14,8 +14,8 @@ class HubblescopeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-		$config = $this->app['config']->get("telescope");
-		$this->app['config']->set("telescope.ignore_paths", array_merge(["hubblescope*"], $config['ignore_paths']));
+		$telescopeConfig = $this->app['config']->get("telescope");
+		$this->app['config']->set("telescope.ignore_paths", array_merge(["hubblescope*"], $telescopeConfig['ignore_paths']));
     }
 
     /**
@@ -49,9 +49,9 @@ class HubblescopeServiceProvider extends ServiceProvider
     private function routeConfiguration()
     {
         return [
-            'domain' => config('telescope.domain', null),
-            // 'prefix' => config('telescope.path'),
-            'middleware' => 'telescope',
+            'domain' => config('hubblescope.domain'),
+            'middleware' => config('hubblescope.middleware'),
+            'prefix' => config('hubblescope.path'),
         ];
     }
     /**
@@ -78,11 +78,11 @@ class HubblescopeServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/hubblescope'),
-            ], ['hubblescope-assets', 'laravel-assets']);
+            ], ['hubblescope-assets']);
 
-            // $this->publishes([
-            //     __DIR__.'/../config/hubblescope.php' => config_path('hubblescope.php'),
-            // ], 'hubblescope-config');
+            $this->publishes([
+                __DIR__.'/../config/hubblescope.php' => config_path('hubblescope.php'),
+            ], 'hubblescope-config');
         }
     }
 }

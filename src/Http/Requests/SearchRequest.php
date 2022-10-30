@@ -14,6 +14,7 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
+			"type" => ["required", "string"],
             "tags" => ['nullable', 'string'],
             "fields" => ['nullable', 'array'],
             "fields.*.key" => ['required', 'string'],

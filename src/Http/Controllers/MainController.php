@@ -2,24 +2,33 @@
 
 namespace Hubblescope\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controller;
 use Hubblescope\Http\Requests\DumpQueryRequest;
 use Hubblescope\Http\Requests\SearchRequest;
+use Hubblescope\Http\Services\MainService;
 use Hubblescope\Models\TelescopeEntry;
 
 class MainController extends Controller
 {
 	public function index()
 	{
-		return view("hubblescope::layout");
+		$hubblescopeScriptVariables = [
+			"prefix" => config("hubblescope.path"),
+		];
+		$availableModes = config("hubblescope.modes");
+
+		return view("hubblescope::layout", [
+			"scriptVariables" => $hubblescopeScriptVariables,
+			"availableModes" => $availableModes,
+		]);
 	}
 
 	public function search(SearchRequest $request)
 	{
 		$query = TelescopeEntry::query();
-		$result = $this->buildQuery($query, $request)
-			->paginate($request->itemsPerPage);
+		$query = MainService::buildQuery($query, $request);
+
+		$result = $query->paginate($request->itemsPerPage);
 
 		return response()->json([
 			"message" => "Success",
@@ -30,36 +39,13 @@ class MainController extends Controller
 	public function dumpQuery(DumpQueryRequest $request)
 	{
 		$query = TelescopeEntry::query();
-		$query = $this->buildQuery($query, $request);
+		$query = MainService::buildQuery($query, $request);
 
-		$result = self::getSql($query);
+		$result = MainService::getSql($query);
 
 		return response()->json([
 			"message" => "Success",
 			"data" => $result,
 		]);
-	}
-
-	protected function buildQuery($query, $request)
-	{
-		$tags = array_filter(explode(',', $request->tags));
-		$fields = $request->fields;
-
-		return $query->where("type", "request")
-			->when($tags, function($q) use ($tags){
-				$q->withTags($tags);
-			})
-			->when($fields, function($q) use ($fields){
-				foreach ($fields as $field){
-					$q->withField($field);
-				}
-			})
-			->latest();
-	}
-
-	public static function getSql(Builder $builder)
-	{
-		$addSlashes = str_replace('?', "'?'", $builder->toSql());
-		return vsprintf(str_replace('?', '%s', $addSlashes), $builder->getBindings());
 	}
 }

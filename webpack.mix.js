@@ -1,6 +1,4 @@
 const mix = require('laravel-mix');
-// const webpack = require('webpack');
-// const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,7 +13,6 @@ const mix = require('laravel-mix');
 
 mix
 	.setPublicPath('public')
-	// .sass('resources/sass/app.scss', 'public')
 	.js('resources/js/app.js', 'public')
 	.vue()
 	.version();

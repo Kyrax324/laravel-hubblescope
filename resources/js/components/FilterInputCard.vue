@@ -42,6 +42,7 @@
 						<v-col v-if="formAction != 'new'" cols="auto">
 							<v-btn
 								small
+								outlined
 								color="error"
 								class="text-capitalize"
 								@click="()=>{
@@ -89,7 +90,7 @@
 							<v-divider class="my-1"></v-divider>
 							<div class="text-caption">Quick Actions:</div>
 							<v-row dense class="ma-0 pt-1">
-								<template v-for="(shortcut, i) in shortcuts">
+								<template v-for="(shortcut, i) in mode.shortcuts">
 									<v-col :key="i" cols="auto">
 										<v-chip
 											color="info darken-3"
@@ -137,6 +138,10 @@ export default {
 		value: {
 			type: Array,
 			default: null
+		},
+		mode:{
+			type: Object,
+			default: ()=>({})
 		}
 	},
 	data(){
@@ -146,7 +151,6 @@ export default {
 			formAction: null,
 			formDialog: false,
 			operatorOptions: [],
-			shortcuts: [],
 		}
 	},
 	watch:{
@@ -159,7 +163,6 @@ export default {
 	},
 	created(){
 		this.operatorOptions = window.operatorOptions
-		this.shortcuts = window.shortcutSuggestions
 	},
 	methods:{
 		newFilterObj(key = '', value = '', operator = 'like'){

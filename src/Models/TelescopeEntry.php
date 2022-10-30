@@ -44,6 +44,12 @@ class TelescopeEntry extends EntryModel
 			$key = Str::replace(".", "->", $field['key']);
 		}
 
-		return $query->where( $key, $operator, $field['value'] );
+		$value = $field['value'];
+		if(Str::startsWith($value, "(bool)")){
+			$value = Str::replace("(bool)", "", $value);
+			$value = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+		}
+
+		return $query->where( $key, $operator, $value);
 	}
 }

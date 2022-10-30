@@ -12,10 +12,15 @@
 
     <!-- Style sheets-->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<script src="{{ asset(mix('app.js', 'vendor/hubblescope')) }}" defer></script>
+	<style>
+		body{
+			background-color: #232429;
+			color: #FFF;
+		}
+	</style>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
 	<v-app>
 		<v-main>
 			<v-sheet color="background" class="fill-height">
@@ -33,14 +38,11 @@
 	</v-app>
 </div>
 <script>
-window.shortcutSuggestions = [
-	{  text: "URI", key: "content.uri", value: "", operator : "like" },
-	{  text: "Method", key: "content.method", value: "", operator : "=" },
-	{  text: "Http Code", key: "content.response_status", value: "", operator : "=" },
-	{  text: "Domain", key: "content.headers.host", value: "", operator : "like" },
-]
-
+window.availableModes = @json($availableModes); // customizable in config('hubblescope.modes')
+window.hubblescope = @json($scriptVariables);
 window.operatorOptions = ["=", "like", ">", ">=", "<", "<=", "!=", "not like"]
 </script>
+
+<script src="{{ asset(mix('app.js', 'vendor/hubblescope')) }}"></script>
 </body>
 </html>

@@ -9,6 +9,4 @@ Route::prefix('hubblescope-api')->middleware([])->group(function ()
 	Route::post('/dump-query', [MainController::class, 'dumpQuery']);
 });
 
-// Route::get('/hubblescope', [MainController::class, 'index']);
-
-Route::get('/hubblescope/{view?}', [MainController::class, 'index'])->where('view', '(.*)')->name('hubblescope');
+Route::get('/{view?}', [MainController::class, 'index'])->where('view', '(.*)')->name('hubblescope-index');
