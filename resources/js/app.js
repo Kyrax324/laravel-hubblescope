@@ -1,4 +1,3 @@
-import '@mdi/font/css/materialdesignicons.min.css';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Vue from 'vue';
